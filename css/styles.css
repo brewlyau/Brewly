@@ -1888,36 +1888,42 @@ a.nav-cta {
   color: var(--color-text-secondary);
 }
 
-.savings-content {
+.free-coffees-grid {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.savings-left {
+.free-coffee-item {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 12px;
+  border-radius: 6px;
+  min-width: 60px;
 }
 
-.savings-right {
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.free-coffee-num {
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
-.result-coffees {
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.result-coffees-label {
-  font-size: 0.7rem;
+.free-coffee-period {
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   opacity: 0.8;
+}
+
+.free-coffees-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-left: auto;
+  opacity: 0.9;
 }
 
 @media (max-width: 900px) {

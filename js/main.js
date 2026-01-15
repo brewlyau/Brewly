@@ -48,7 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const costWith = document.getElementById('cost-with');
     const weeklySavings = document.getElementById('weekly-savings');
     const savingsDetail = document.getElementById('savings-detail');
-    const freeCoffees = document.getElementById('free-coffees');
+    const weeklyFree = document.getElementById('weekly-free');
+    const monthlyFree = document.getElementById('monthly-free');
+    const yearlyFree = document.getElementById('yearly-free');
 
     function updateCalculator() {
       const price = parseFloat(coffeePrice.value);
@@ -75,7 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
       costWith.textContent = `$${weeklyWithBrewly.toFixed(2)}`;
       weeklySavings.innerHTML = `$${weeklySaved.toFixed(2)}<span class="result-period">/week</span>`;
       savingsDetail.textContent = `$${Math.round(monthlySaved)}/month, $${Math.round(yearlySaved)}/year`;
-      freeCoffees.textContent = `${weeklyFreeCoffees}/week, ${monthlyFreeCoffees}/month, ${yearlyFreeCoffees}/year`;
+      weeklyFree.textContent = weeklyFreeCoffees;
+      monthlyFree.textContent = monthlyFreeCoffees;
+      yearlyFree.textContent = yearlyFreeCoffees;
     }
 
     coffeePrice.addEventListener('input', updateCalculator);
