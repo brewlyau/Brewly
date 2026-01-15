@@ -1940,7 +1940,8 @@ a.nav-cta {
   font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.3px;
-  opacity: 0.75;
+  color: #fff;
+  opacity: 0.85;
   margin-top: 2px;
 }
 
