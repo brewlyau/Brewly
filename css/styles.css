@@ -1951,7 +1951,7 @@ a.nav-cta {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #fff;
+  color: #fff !important;
   opacity: 0.85;
   margin-top: 8px;
 }
