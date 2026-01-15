@@ -1888,11 +1888,36 @@ a.nav-cta {
   color: var(--color-text-secondary);
 }
 
+.savings-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.savings-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.savings-right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .result-coffees {
-  font-size: 0.8rem;
-  font-weight: 500;
-  margin-top: 4px;
-  opacity: 0.9;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.result-coffees-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
 }
 
 @media (max-width: 900px) {
