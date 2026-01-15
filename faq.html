@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Frequently asked questions about Brewly - your coffee subscription app.">
+  <title>FAQ | Brewly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="logos/Thumbnail.png" type="image/png">
+</head>
+<body>
+  <script src="js/main.js"></script>
+  <header class="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo">
+        <img src="logos/Straight Logo.png" alt="Brewly">
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="faq.html" class="nav-active">FAQ</a>
+        <a href="partners.html">Partners</a>
+        <a href="store.html" class="nav-cta">Get the App</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>FAQ</h1>
+        <p class="page-subtitle">Got questions? We've got answers.</p>
+      </div>
+    </section>
+
+    <section class="faq-page-content">
+      <div class="container">
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>How much can I actually save?</h3>
+            <p>Depending on the cafe, you can save up to 25% on your regular coffee order. The more you subscribe, the more you save.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How do I redeem my coffee?</h3>
+            <p>Simply open the app, swipe to redeem, and show the screen to your barista. They'll confirm it visually and make your drink.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Can I cancel anytime?</h3>
+            <p>Yes. There are no lock-in contracts. Pause or cancel your subscription whenever you like, no questions asked.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Can I use my coffees at any cafe?</h3>
+            <p>Your subscription is tied to the cafe you choose. You can have multiple subscriptions at different cafes if you like.</p>
+          </div>
+          <div class="faq-item">
+            <h3>What coffees can I get?</h3>
+            <p>Each cafe sets their own menu for Brewly subscribers. Most offer their standard coffee menu at the discounted rate.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How do I find cafes near me?</h3>
+            <p>Download the app and browse the map to see all participating cafes in your area.</p>
+          </div>
+          <div class="faq-item">
+            <h3>When am I charged?</h3>
+            <p>You're charged upfront when you subscribe, then at the start of each new billing cycle (weekly, fortnightly, or monthly depending on your plan).</p>
+          </div>
+          <div class="faq-item">
+            <h3>What if a cafe closes or leaves Brewly?</h3>
+            <p>If your cafe leaves the platform, we'll notify you immediately and refund any unused coffees from your current subscription.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-form-wrapper">
+          <h2>Still have questions?</h2>
+          <p>Get in touch with us today and we'll get back to you.</p>
+          <form id="contact-form" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="Your name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="you@example.com">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required placeholder="What's this about?">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Your question or message..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary-dark">Send Message</button>
+          </form>
+          <p id="form-status" class="form-status"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to start saving?</h2>
+        <p>Download Brewly and find participating cafes near you.</p>
+        <a href="index.html#download" class="btn-primary">Get the App</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="index.html" class="footer-brand">
+          <img src="logos/Straight Logo.png" alt="Brewly" height="36">
+        </a>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 Brewly</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
