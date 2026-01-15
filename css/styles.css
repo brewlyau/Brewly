@@ -1817,17 +1817,17 @@ a.nav-cta {
 .calculator-results {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
 }
 
 .result-card {
   background: var(--color-bg);
   border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 24px;
+  border-radius: 10px;
+  padding: 14px 18px;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  gap: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -1848,20 +1848,23 @@ a.nav-cta {
 }
 
 .result-label {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--color-text-secondary);
   font-weight: 500;
+  min-width: 90px;
 }
 
 .result-amount {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-primary);
+  min-width: 80px;
 }
 
 .result-detail {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--color-text-secondary);
+  margin-left: auto;
 }
 
 @media (max-width: 900px) {
@@ -1876,8 +1879,18 @@ a.nav-cta {
     padding: 60px 0;
   }
 
+  .result-card {
+    flex-wrap: wrap;
+  }
+
   .result-amount {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  .result-detail {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 4px;
   }
 }
 
@@ -1997,4 +2010,24 @@ a.nav-cta {
   .cafes-section {
     padding: 60px 0;
   }
+}
+
+/* Cafes Page */
+.cafes-page-content {
+  padding: 60px 0 100px;
+}
+
+.cafes-page-content .cafes-wrapper {
+  margin-top: 0;
+}
+
+.cafes-page-content .cafes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cafes-page-content .btn-primary-dark {
+  margin-top: 8px;
+  text-align: center;
 }
