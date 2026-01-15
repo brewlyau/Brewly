@@ -47,6 +47,7 @@
         <div class="hero-content">
           <p class="hero-eyebrow">For the every day coffee drinker</p>
           <h1>Your daily coffee.<br>Up to 50% cheaper.</h1>
+          <p class="hero-free-badge">100% free to download and use</p>
           <a href="store/" class="hero-offer">Download now. First coffee's free.</a>
           <div class="app-buttons" id="download">
             <a href="#" class="app-button">
@@ -100,6 +101,126 @@
           <div class="savings-result">
             <span class="savings-label">You save</span>
             <span class="savings-price">$20/month</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="calculator-section fade-in">
+      <div class="container">
+        <h2>Calculate your savings</h2>
+        <p class="section-subtitle">See how much you could save with Brewly.</p>
+        <div class="calculator-wrapper">
+          <div class="calculator-inputs">
+            <div class="calculator-input-group">
+              <label for="coffee-price">Your usual coffee price</label>
+              <div class="input-with-value">
+                <input type="range" id="coffee-price" min="3" max="8" step="0.5" value="5">
+                <span class="input-value" id="coffee-price-value">$5.00</span>
+              </div>
+            </div>
+            <div class="calculator-input-group">
+              <label for="coffees-per-week">Coffees per week</label>
+              <div class="input-with-value">
+                <input type="range" id="coffees-per-week" min="1" max="14" step="1" value="5">
+                <span class="input-value" id="coffees-per-week-value">5</span>
+              </div>
+            </div>
+            <div class="calculator-input-group">
+              <label for="discount-percent">Cafe discount</label>
+              <div class="input-with-value">
+                <input type="range" id="discount-percent" min="10" max="50" step="5" value="20">
+                <span class="input-value" id="discount-percent-value">20%</span>
+              </div>
+            </div>
+          </div>
+          <div class="calculator-results">
+            <div class="result-card result-weekly">
+              <span class="result-label">Weekly savings</span>
+              <span class="result-amount" id="weekly-savings">$5.00</span>
+              <span class="result-detail" id="weekly-coffees">That's 1 free coffee!</span>
+            </div>
+            <div class="result-card result-monthly">
+              <span class="result-label">Monthly savings</span>
+              <span class="result-amount" id="monthly-savings">$20.00</span>
+              <span class="result-detail" id="monthly-coffees">4 free coffees per month</span>
+            </div>
+            <div class="result-card result-yearly">
+              <span class="result-label">Yearly savings</span>
+              <span class="result-amount" id="yearly-savings">$260.00</span>
+              <span class="result-detail" id="yearly-coffees">52 free coffees per year</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cafes-section fade-in">
+      <div class="container">
+        <h2>Find cafes near you</h2>
+        <p class="section-subtitle">Discover participating cafes in your area.</p>
+        <div class="cafes-wrapper">
+          <div class="cafes-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106459.54066657895!2d151.1091!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129838f39a743f%3A0x3017d681632a850!2sSydney%20NSW!5e0!3m2!1sen!2sau!4v1704067200000!5m2!1sen!2sau"
+              width="100%"
+              height="400"
+              style="border:0; border-radius: 12px;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+          <div class="cafes-list">
+            <p class="cafes-coming-soon">Coming soon to Sydney and beyond!</p>
+            <div class="demo-cafes">
+              <div class="demo-cafe">
+                <div class="cafe-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                </div>
+                <div class="cafe-info">
+                  <h4>The Daily Grind</h4>
+                  <p>Surry Hills</p>
+                </div>
+              </div>
+              <div class="demo-cafe">
+                <div class="cafe-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                </div>
+                <div class="cafe-info">
+                  <h4>Bean There</h4>
+                  <p>Newtown</p>
+                </div>
+              </div>
+              <div class="demo-cafe">
+                <div class="cafe-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                </div>
+                <div class="cafe-info">
+                  <h4>Morning Ritual</h4>
+                  <p>Bondi</p>
+                </div>
+              </div>
+              <div class="demo-cafe">
+                <div class="cafe-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                </div>
+                <div class="cafe-info">
+                  <h4>Espresso Express</h4>
+                  <p>CBD</p>
+                </div>
+              </div>
+              <div class="demo-cafe">
+                <div class="cafe-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                </div>
+                <div class="cafe-info">
+                  <h4>Brew & Co</h4>
+                  <p>Manly</p>
+                </div>
+              </div>
+            </div>
+            <p class="cafes-cta-text">Download the app to see all participating cafes</p>
           </div>
         </div>
       </div>

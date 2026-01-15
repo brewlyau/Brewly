@@ -35,6 +35,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Savings calculator
+  const coffeePrice = document.getElementById('coffee-price');
+  const coffeesPerWeek = document.getElementById('coffees-per-week');
+  const discountPercent = document.getElementById('discount-percent');
+
+  if (coffeePrice && coffeesPerWeek && discountPercent) {
+    const coffeePriceValue = document.getElementById('coffee-price-value');
+    const coffeesPerWeekValue = document.getElementById('coffees-per-week-value');
+    const discountPercentValue = document.getElementById('discount-percent-value');
+    const weeklySavings = document.getElementById('weekly-savings');
+    const monthlySavings = document.getElementById('monthly-savings');
+    const yearlySavings = document.getElementById('yearly-savings');
+    const weeklyCoffees = document.getElementById('weekly-coffees');
+    const monthlyCoffees = document.getElementById('monthly-coffees');
+    const yearlyCoffees = document.getElementById('yearly-coffees');
+
+    function updateCalculator() {
+      const price = parseFloat(coffeePrice.value);
+      const cups = parseInt(coffeesPerWeek.value);
+      const discount = parseInt(discountPercent.value) / 100;
+
+      // Update display values
+      coffeePriceValue.textContent = `$${price.toFixed(2)}`;
+      coffeesPerWeekValue.textContent = cups;
+      discountPercentValue.textContent = `${discountPercent.value}%`;
+
+      // Calculate savings
+      const weeklyTotal = price * cups;
+      const weeklySaved = weeklyTotal * discount;
+      const monthlySaved = weeklySaved * 4.33; // Average weeks per month
+      const yearlySaved = weeklySaved * 52;
+
+      // Calculate free coffees equivalent
+      const weeklyFreeCoffees = weeklySaved / price;
+      const monthlyFreeCoffees = monthlySaved / price;
+      const yearlyFreeCoffees = yearlySaved / price;
+
+      // Update results
+      weeklySavings.textContent = `$${weeklySaved.toFixed(2)}`;
+      monthlySavings.textContent = `$${monthlySaved.toFixed(2)}`;
+      yearlySavings.textContent = `$${yearlySaved.toFixed(2)}`;
+
+      // Update coffee equivalents
+      if (weeklyFreeCoffees >= 1) {
+        weeklyCoffees.textContent = `That's ${Math.floor(weeklyFreeCoffees)} free coffee${Math.floor(weeklyFreeCoffees) > 1 ? 's' : ''}!`;
+      } else {
+        weeklyCoffees.textContent = `Almost a free coffee!`;
+      }
+      monthlyCoffees.textContent = `${Math.floor(monthlyFreeCoffees)} free coffees per month`;
+      yearlyCoffees.textContent = `${Math.floor(yearlyFreeCoffees)} free coffees per year`;
+    }
+
+    coffeePrice.addEventListener('input', updateCalculator);
+    coffeesPerWeek.addEventListener('input', updateCalculator);
+    discountPercent.addEventListener('input', updateCalculator);
+
+    // Initial calculation
+    updateCalculator();
+  }
+
   // Scroll animations (index page only)
   const fadeElements = document.querySelectorAll('.fade-in');
   if (fadeElements.length > 0) {
