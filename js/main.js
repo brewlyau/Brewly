@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const weeklySaved = weeklyTotal * discount;
       const monthlySaved = weeklySaved * 4.33;
       const yearlySaved = weeklySaved * 52;
-      const weeklyFreeCoffees = Math.floor(weeklySaved / price);
+      const weeklyFreeCoffees = weeklySaved / price;
       const monthlyFreeCoffees = Math.floor(monthlySaved / price);
       const yearlyFreeCoffees = Math.floor(yearlySaved / price);
 
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
       costWith.textContent = `$${weeklyWithBrewly.toFixed(2)}`;
       weeklySavings.innerHTML = `$${weeklySaved.toFixed(2)}<span class="result-period">/week</span>`;
       savingsDetail.textContent = `$${Math.round(monthlySaved)}/month, $${Math.round(yearlySaved)}/year`;
-      weeklyFree.textContent = weeklyFreeCoffees;
+      weeklyFree.textContent = weeklyFreeCoffees < 1 ? weeklyFreeCoffees.toFixed(1) : Math.floor(weeklyFreeCoffees);
       monthlyFree.textContent = monthlyFreeCoffees;
       yearlyFree.textContent = yearlyFreeCoffees;
     }
