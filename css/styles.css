@@ -1814,20 +1814,25 @@ a.nav-cta {
   color: var(--color-primary);
 }
 
+.calculator-intro {
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+}
+
 .calculator-results {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .result-card {
   background: var(--color-bg);
   border: 1px solid var(--color-border);
-  border-radius: 10px;
-  padding: 16px 20px;
+  border-radius: 8px;
+  padding: 12px 16px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -1848,16 +1853,18 @@ a.nav-cta {
 .result-card.result-savings {
   background: var(--color-primary);
   border-color: var(--color-primary);
+  padding: 14px 16px;
 }
 
 .result-card.result-savings .result-label,
 .result-card.result-savings .result-amount,
-.result-card.result-savings .result-detail {
+.result-card.result-savings .result-detail,
+.result-card.result-savings .result-coffees {
   color: #fff;
 }
 
 .result-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--color-text-secondary);
   font-weight: 500;
   text-transform: uppercase;
@@ -1865,14 +1872,27 @@ a.nav-cta {
 }
 
 .result-amount {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-primary);
 }
 
+.result-period {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
 .result-detail {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--color-text-secondary);
+}
+
+.result-coffees {
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 4px;
+  opacity: 0.9;
 }
 
 @media (max-width: 900px) {
