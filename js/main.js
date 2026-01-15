@@ -44,12 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const coffeePriceValue = document.getElementById('coffee-price-value');
     const coffeesPerWeekValue = document.getElementById('coffees-per-week-value');
     const discountPercentValue = document.getElementById('discount-percent-value');
+    const costWithout = document.getElementById('cost-without');
+    const costWith = document.getElementById('cost-with');
     const weeklySavings = document.getElementById('weekly-savings');
-    const monthlySavings = document.getElementById('monthly-savings');
-    const yearlySavings = document.getElementById('yearly-savings');
-    const weeklyCoffees = document.getElementById('weekly-coffees');
-    const monthlyCoffees = document.getElementById('monthly-coffees');
-    const yearlyCoffees = document.getElementById('yearly-coffees');
+    const savingsDetail = document.getElementById('savings-detail');
 
     function updateCalculator() {
       const price = parseFloat(coffeePrice.value);
@@ -61,30 +59,18 @@ document.addEventListener('DOMContentLoaded', () => {
       coffeesPerWeekValue.textContent = cups;
       discountPercentValue.textContent = `${discountPercent.value}%`;
 
-      // Calculate savings
+      // Calculate costs and savings
       const weeklyTotal = price * cups;
+      const weeklyWithBrewly = weeklyTotal * (1 - discount);
       const weeklySaved = weeklyTotal * discount;
-      const monthlySaved = weeklySaved * 4.33; // Average weeks per month
+      const monthlySaved = weeklySaved * 4.33;
       const yearlySaved = weeklySaved * 52;
 
-      // Calculate free coffees equivalent
-      const weeklyFreeCoffees = weeklySaved / price;
-      const monthlyFreeCoffees = monthlySaved / price;
-      const yearlyFreeCoffees = yearlySaved / price;
-
       // Update results
+      costWithout.textContent = `$${weeklyTotal.toFixed(2)}`;
+      costWith.textContent = `$${weeklyWithBrewly.toFixed(2)}`;
       weeklySavings.textContent = `$${weeklySaved.toFixed(2)}`;
-      monthlySavings.textContent = `$${monthlySaved.toFixed(2)}`;
-      yearlySavings.textContent = `$${yearlySaved.toFixed(2)}`;
-
-      // Update coffee equivalents
-      if (weeklyFreeCoffees >= 1) {
-        weeklyCoffees.textContent = `That's ${Math.floor(weeklyFreeCoffees)} free coffee${Math.floor(weeklyFreeCoffees) > 1 ? 's' : ''}!`;
-      } else {
-        weeklyCoffees.textContent = `Almost a free coffee!`;
-      }
-      monthlyCoffees.textContent = `${Math.floor(monthlyFreeCoffees)} free coffees per month`;
-      yearlyCoffees.textContent = `${Math.floor(yearlyFreeCoffees)} free coffees per year`;
+      savingsDetail.textContent = `$${Math.round(monthlySaved)}/month, $${Math.round(yearlySaved)}/year`;
     }
 
     coffeePrice.addEventListener('input', updateCalculator);
