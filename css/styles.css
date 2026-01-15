@@ -333,6 +333,8 @@ a.nav-cta {
   color: var(--color-bg);
   border-radius: 12px;
   transition: all 0.3s ease;
+  min-width: 180px;
+  justify-content: center;
 }
 
 .app-button:hover {
