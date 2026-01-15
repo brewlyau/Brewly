@@ -1751,7 +1751,7 @@ a.nav-cta {
    =================== */
 .waitlist-section {
   padding: 80px 0;
-  background: var(--color-cream);
+  background: var(--color-primary);
 }
 
 .waitlist-content {
@@ -1765,10 +1765,11 @@ a.nav-cta {
   font-weight: 700;
   letter-spacing: -0.03em;
   margin-bottom: 12px;
+  color: #FFFFFF;
 }
 
 .waitlist-content > p {
-  color: var(--color-text-secondary);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1.125rem;
   margin-bottom: 24px;
 }
@@ -1807,20 +1808,26 @@ a.nav-cta {
 
 .waitlist-input-group button {
   white-space: nowrap;
+  background: var(--color-cream);
+  color: var(--color-primary);
+}
+
+.waitlist-input-group button:hover {
+  background: #FFFFFF;
 }
 
 .waitlist-status {
   font-size: 0.875rem;
-  color: var(--color-text-secondary);
+  color: rgba(255, 255, 255, 0.7);
   min-height: 20px;
 }
 
 .waitlist-status.success {
-  color: #22863a;
+  color: #7ee787;
 }
 
 .waitlist-status.error {
-  color: #cb2431;
+  color: #ffa198;
 }
 
 @media (max-width: 480px) {
