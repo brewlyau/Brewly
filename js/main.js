@@ -147,4 +147,44 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Waitlist form submission
+  const waitlistForm = document.getElementById('waitlist-form');
+  const waitlistStatus = document.getElementById('waitlist-status');
+
+  if (waitlistForm) {
+    waitlistForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitBtn = waitlistForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Joining...';
+      submitBtn.disabled = true;
+      waitlistStatus.textContent = '';
+      waitlistStatus.className = 'waitlist-status';
+
+      const formData = new FormData(waitlistForm);
+      formData.append('type', 'waitlist');
+      formData.append('timestamp', new Date().toISOString());
+
+      try {
+        await fetch(GOOGLE_SHEETS_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        });
+
+        // With no-cors mode, we can't read the response, so assume success
+        waitlistStatus.textContent = "You're on the list! We'll be in touch soon.";
+        waitlistStatus.classList.add('success');
+        waitlistForm.reset();
+      } catch (error) {
+        waitlistStatus.textContent = 'Something went wrong. Please try again.';
+        waitlistStatus.classList.add('error');
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  }
 });

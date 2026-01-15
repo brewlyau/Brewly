@@ -573,6 +573,25 @@ a.nav-cta {
   color: var(--color-primary);
 }
 
+.footer-social {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-social a {
+  color: var(--color-text-secondary);
+  transition: color 0.2s ease;
+}
+
+.footer-social a:hover {
+  color: var(--color-primary);
+}
+
+.footer-social svg {
+  width: 24px;
+  height: 24px;
+}
+
 .footer-copy {
   font-size: 0.875rem;
   color: var(--color-text-secondary);
@@ -1724,6 +1743,93 @@ a.nav-cta {
 @media (max-width: 768px) {
   .faq-page-content .faq-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ===================
+   Waitlist Section
+   =================== */
+.waitlist-section {
+  padding: 80px 0;
+  background: var(--color-cream);
+}
+
+.waitlist-content {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.waitlist-content h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+.waitlist-content > p {
+  color: var(--color-text-secondary);
+  font-size: 1.125rem;
+  margin-bottom: 24px;
+}
+
+.waitlist-form {
+  margin-bottom: 16px;
+}
+
+.waitlist-input-group {
+  display: flex;
+  gap: 12px;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.waitlist-input-group input {
+  flex: 1;
+  padding: 14px 18px;
+  font-size: 1rem;
+  font-family: var(--font);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.waitlist-input-group input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.waitlist-input-group input:focus {
+  border-color: var(--color-primary);
+}
+
+.waitlist-input-group button {
+  white-space: nowrap;
+}
+
+.waitlist-status {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  min-height: 20px;
+}
+
+.waitlist-status.success {
+  color: #22863a;
+}
+
+.waitlist-status.error {
+  color: #cb2431;
+}
+
+@media (max-width: 480px) {
+  .waitlist-input-group {
+    flex-direction: column;
+  }
+
+  .waitlist-input-group button {
+    width: 100%;
   }
 }
 
