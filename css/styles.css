@@ -281,23 +281,22 @@ a.nav-cta {
   z-index: 3;
 }
 
-/* Carousel dots - hidden on desktop */
+/* Carousel - hidden on desktop */
 .hero-carousel-dots {
   display: none;
 }
 
 @media (max-width: 900px) {
   .hero-visual {
-    display: block !important;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-phones {
     width: 200px;
-    height: 380px;
+    height: 400px;
     position: relative;
-    margin: 0 auto 20px auto;
-    display: block;
   }
 
   .hero-phone {
@@ -306,47 +305,32 @@ a.nav-cta {
     left: 0;
     top: 0;
     opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease;
+    transform: none !important;
   }
 
   .hero-phone.carousel-active {
     opacity: 1;
-    visibility: visible;
   }
 
-  .hero-phone-front,
-  .hero-phone-mid,
-  .hero-phone-back {
-    transform: none !important;
-    z-index: 1;
-  }
-
-  .hero-phone.carousel-active {
-    z-index: 2;
-  }
-
-  .hero-phones:hover .hero-phone-front,
-  .hero-phones:hover .hero-phone-mid,
-  .hero-phones:hover .hero-phone-back {
+  .hero-phones:hover .hero-phone {
     transform: none !important;
   }
 
-  /* Carousel dots */
+  /* Carousel dots - always visible on mobile */
   .hero-carousel-dots {
-    display: flex;
+    display: flex !important;
     justify-content: center;
-    gap: 12px;
-    width: 100%;
+    gap: 14px;
+    padding: 20px 0;
   }
 
   .carousel-dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: rgba(61, 36, 24, 0.2);
+    background: rgba(61, 36, 24, 0.3);
     cursor: pointer;
-    transition: background 0.3s ease;
+    border: none;
   }
 
   .carousel-dot.active {

@@ -21,122 +21,73 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Hero phone carousel for mobile
-  const heroPhones = document.querySelector('.hero-phones');
   const phones = document.querySelectorAll('.hero-phone');
   const dots = document.querySelectorAll('.carousel-dot');
 
-  if (heroPhones && phones.length > 0) {
-    let currentSlide = 0;
-    let autoPlayInterval = null;
-    let touchStartX = 0;
-    let isTransitioning = false;
+  if (phones.length === 3 && dots.length === 3) {
+    let current = 0;
+    let timer = null;
 
-    function isMobile() {
-      return window.innerWidth <= 900;
+    function show(n) {
+      // Wrap around
+      if (n >= 3) n = 0;
+      if (n < 0) n = 2;
+
+      // Update classes
+      for (let i = 0; i < 3; i++) {
+        phones[i].classList.remove('carousel-active');
+        dots[i].classList.remove('active');
+      }
+      phones[n].classList.add('carousel-active');
+      dots[n].classList.add('active');
+      current = n;
     }
 
-    function showSlide(index) {
-      if (isTransitioning || index === currentSlide) return;
-      isTransitioning = true;
-
-      // Ensure index is valid
-      if (index < 0) index = phones.length - 1;
-      if (index >= phones.length) index = 0;
-
-      phones.forEach((phone, i) => {
-        phone.classList.remove('carousel-active');
-      });
-      dots.forEach((dot, i) => {
-        dot.classList.remove('active');
-      });
-
-      phones[index].classList.add('carousel-active');
-      if (dots[index]) dots[index].classList.add('active');
-      currentSlide = index;
-
-      setTimeout(() => {
-        isTransitioning = false;
-      }, 450);
-    }
-
-    function nextSlide() {
-      if (!isMobile()) return;
-      let next = currentSlide + 1;
-      if (next >= phones.length) next = 0;
-      showSlide(next);
-    }
-
-    function startAutoPlay() {
-      stopAutoPlay();
-      if (isMobile()) {
-        autoPlayInterval = setInterval(nextSlide, 4000);
+    function next() {
+      if (window.innerWidth <= 900) {
+        show(current + 1);
       }
     }
 
-    function stopAutoPlay() {
-      if (autoPlayInterval) {
-        clearInterval(autoPlayInterval);
-        autoPlayInterval = null;
+    function start() {
+      stop();
+      if (window.innerWidth <= 900) {
+        timer = setInterval(next, 4000);
       }
     }
 
-    // Initialize carousel on mobile
-    function initCarousel() {
-      stopAutoPlay();
-      if (isMobile()) {
-        isTransitioning = false;
-        phones.forEach(phone => phone.classList.remove('carousel-active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-        phones[0].classList.add('carousel-active');
-        if (dots[0]) dots[0].classList.add('active');
-        currentSlide = 0;
-        startAutoPlay();
+    function stop() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    // Dot clicks
+    for (let i = 0; i < 3; i++) {
+      dots[i].addEventListener('click', () => {
+        stop();
+        show(i);
+        start();
+      });
+    }
+
+    // Init on load and resize
+    function init() {
+      stop();
+      if (window.innerWidth <= 900) {
+        show(0);
+        start();
       } else {
-        phones.forEach(phone => phone.classList.remove('carousel-active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-      }
-    }
-
-    // Dot click handlers
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        stopAutoPlay();
-        showSlide(index);
-        startAutoPlay();
-      });
-    });
-
-    // Touch/swipe support
-    heroPhones.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-      stopAutoPlay();
-    }, { passive: true });
-
-    heroPhones.addEventListener('touchend', (e) => {
-      const touchEndX = e.changedTouches[0].screenX;
-      const diff = touchStartX - touchEndX;
-
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) {
-          nextSlide();
-        } else {
-          let prev = currentSlide - 1;
-          if (prev < 0) prev = phones.length - 1;
-          showSlide(prev);
+        for (let i = 0; i < 3; i++) {
+          phones[i].classList.remove('carousel-active');
+          dots[i].classList.remove('active');
         }
       }
-      startAutoPlay();
-    }, { passive: true });
+    }
 
-    // Handle resize with debounce
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(initCarousel, 200);
-    });
-
-    // Initialize
-    initCarousel();
+    window.addEventListener('resize', init);
+    init();
   }
 
   // FAQ accordion
