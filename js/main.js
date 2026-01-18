@@ -1,5 +1,5 @@
 // Google Sheets Web App URL - Replace with your deployed Apps Script URL
-const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbypPqx6SYM8g8kgJYC5_EAVyJrwHyVBgXYoZ87ksmGb4a52L6CAcb38hWFe9ikfXej4/exec';
+const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxWxeVr5UGCsRnPnY80J66-r-kTZsKFWHmVrvezTjA1OJSad7TDnIlAVgLwE8aae390/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile menu toggle
