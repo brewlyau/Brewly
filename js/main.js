@@ -25,40 +25,51 @@ document.addEventListener('DOMContentLoaded', () => {
   const phones = document.querySelectorAll('.hero-phone');
   const dots = document.querySelectorAll('.carousel-dot');
 
-  if (heroPhones && phones.length > 0 && dots.length > 0) {
+  if (heroPhones && phones.length > 0) {
     let currentSlide = 0;
     let autoPlayInterval = null;
     let touchStartX = 0;
+    let isTransitioning = false;
 
     function isMobile() {
       return window.innerWidth <= 900;
     }
 
     function showSlide(index) {
+      if (isTransitioning || index === currentSlide) return;
+      isTransitioning = true;
+
+      // Ensure index is valid
+      if (index < 0) index = phones.length - 1;
+      if (index >= phones.length) index = 0;
+
       phones.forEach((phone, i) => {
         phone.classList.remove('carousel-active');
-        if (dots[i]) dots[i].classList.remove('active');
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.remove('active');
       });
 
       phones[index].classList.add('carousel-active');
       if (dots[index]) dots[index].classList.add('active');
       currentSlide = index;
+
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 450);
     }
 
     function nextSlide() {
-      const next = (currentSlide + 1) % phones.length;
+      if (!isMobile()) return;
+      let next = currentSlide + 1;
+      if (next >= phones.length) next = 0;
       showSlide(next);
-    }
-
-    function prevSlide() {
-      const prev = (currentSlide - 1 + phones.length) % phones.length;
-      showSlide(prev);
     }
 
     function startAutoPlay() {
       stopAutoPlay();
       if (isMobile()) {
-        autoPlayInterval = setInterval(nextSlide, 3500);
+        autoPlayInterval = setInterval(nextSlide, 4000);
       }
     }
 
@@ -73,16 +84,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function initCarousel() {
       stopAutoPlay();
       if (isMobile()) {
-        showSlide(currentSlide);
+        isTransitioning = false;
+        phones.forEach(phone => phone.classList.remove('carousel-active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        phones[0].classList.add('carousel-active');
+        if (dots[0]) dots[0].classList.add('active');
+        currentSlide = 0;
         startAutoPlay();
       } else {
         phones.forEach(phone => phone.classList.remove('carousel-active'));
+        dots.forEach(dot => dot.classList.remove('active'));
       }
     }
 
     // Dot click handlers
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
+        stopAutoPlay();
         showSlide(index);
         startAutoPlay();
       });
@@ -102,7 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (diff > 0) {
           nextSlide();
         } else {
-          prevSlide();
+          let prev = currentSlide - 1;
+          if (prev < 0) prev = phones.length - 1;
+          showSlide(prev);
         }
       }
       startAutoPlay();
@@ -112,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let resizeTimeout;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(initCarousel, 150);
+      resizeTimeout = setTimeout(initCarousel, 200);
     });
 
     // Initialize

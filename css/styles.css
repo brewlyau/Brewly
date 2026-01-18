@@ -288,15 +288,16 @@ a.nav-cta {
 
 @media (max-width: 900px) {
   .hero-visual {
-    flex-direction: column;
-    align-items: center;
+    display: block !important;
+    text-align: center;
   }
 
   .hero-phones {
     width: 200px;
     height: 380px;
     position: relative;
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
+    display: block;
   }
 
   .hero-phone {
@@ -305,19 +306,19 @@ a.nav-cta {
     left: 0;
     top: 0;
     opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
+    visibility: hidden;
+    transition: opacity 0.4s ease;
   }
 
   .hero-phone.carousel-active {
     opacity: 1;
-    pointer-events: auto;
+    visibility: visible;
   }
 
   .hero-phone-front,
   .hero-phone-mid,
   .hero-phone-back {
-    transform: none;
+    transform: none !important;
     z-index: 1;
   }
 
@@ -328,7 +329,7 @@ a.nav-cta {
   .hero-phones:hover .hero-phone-front,
   .hero-phones:hover .hero-phone-mid,
   .hero-phones:hover .hero-phone-back {
-    transform: none;
+    transform: none !important;
   }
 
   /* Carousel dots */
@@ -336,7 +337,7 @@ a.nav-cta {
     display: flex;
     justify-content: center;
     gap: 12px;
-    margin-top: 20px;
+    width: 100%;
   }
 
   .carousel-dot {
