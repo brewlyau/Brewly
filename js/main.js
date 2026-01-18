@@ -20,24 +20,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Hero phone carousel for mobile - manual only
+  // Hero phone carousel for mobile - manual with swipe
+  const heroPhones = document.querySelector('.hero-phones');
   const phones = document.querySelectorAll('.hero-phone');
   const dots = document.querySelectorAll('.carousel-dot');
 
-  if (phones.length === 3 && dots.length === 3) {
+  if (phones.length === 3 && dots.length === 3 && heroPhones) {
+    let current = 0;
+    let startX = 0;
+
     function show(n) {
+      if (n < 0) n = 2;
+      if (n > 2) n = 0;
       for (let i = 0; i < 3; i++) {
         phones[i].classList.remove('carousel-active');
         dots[i].classList.remove('active');
       }
       phones[n].classList.add('carousel-active');
       dots[n].classList.add('active');
+      current = n;
     }
 
     // Dot clicks
     for (let i = 0; i < 3; i++) {
       dots[i].addEventListener('click', () => show(i));
     }
+
+    // Swipe support
+    heroPhones.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    heroPhones.addEventListener('touchend', (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const diff = startX - endX;
+      if (diff > 50) show(current + 1);
+      if (diff < -50) show(current - 1);
+    }, { passive: true });
 
     // Init on load and resize
     function init() {

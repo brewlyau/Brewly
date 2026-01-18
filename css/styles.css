@@ -288,15 +288,15 @@ a.nav-cta {
 
 @media (max-width: 900px) {
   .hero-visual {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: block;
+    text-align: center;
   }
 
   .hero-phones {
     width: 200px;
-    height: 400px;
+    height: 420px;
     position: relative;
+    margin: 0 auto;
   }
 
   .hero-phone {
@@ -316,17 +316,17 @@ a.nav-cta {
     transform: none !important;
   }
 
-  /* Carousel dots - always visible on mobile */
+  /* Carousel dots - below the images */
   .hero-carousel-dots {
     display: flex !important;
     justify-content: center;
     gap: 14px;
-    padding: 20px 0;
+    margin-top: 30px;
   }
 
   .carousel-dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: rgba(61, 36, 24, 0.3);
     cursor: pointer;
