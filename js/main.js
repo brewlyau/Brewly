@@ -46,7 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
       dots[i].addEventListener('click', () => show(i));
     }
 
-    // Swipe support
+    // Swipe/drag support
+    let isDragging = false;
+
     heroPhones.addEventListener('touchstart', (e) => {
       startX = e.touches[0].clientX;
     }, { passive: true });
@@ -54,9 +56,27 @@ document.addEventListener('DOMContentLoaded', () => {
     heroPhones.addEventListener('touchend', (e) => {
       const endX = e.changedTouches[0].clientX;
       const diff = startX - endX;
-      if (diff > 50) show(current + 1);
-      if (diff < -50) show(current - 1);
+      if (diff > 30) show(current + 1);
+      if (diff < -30) show(current - 1);
     }, { passive: true });
+
+    // Mouse drag for desktop testing
+    heroPhones.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX;
+    });
+
+    heroPhones.addEventListener('mouseup', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      const diff = startX - e.clientX;
+      if (diff > 30) show(current + 1);
+      if (diff < -30) show(current - 1);
+    });
+
+    heroPhones.addEventListener('mouseleave', () => {
+      isDragging = false;
+    });
 
     // Init on load and resize
     function init() {
