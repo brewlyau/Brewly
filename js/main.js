@@ -20,6 +20,101 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Hero phone carousel for mobile
+  const heroPhones = document.querySelector('.hero-phones');
+  const phones = document.querySelectorAll('.hero-phone');
+  const dots = document.querySelectorAll('.carousel-dot');
+
+  if (heroPhones && phones.length > 0 && dots.length > 0) {
+    let currentSlide = 0;
+    let autoPlayInterval;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function isMobile() {
+      return window.innerWidth <= 900;
+    }
+
+    function showSlide(index) {
+      if (!isMobile()) return;
+
+      phones.forEach((phone, i) => {
+        phone.classList.remove('carousel-active');
+        dots[i].classList.remove('active');
+      });
+
+      phones[index].classList.add('carousel-active');
+      dots[index].classList.add('active');
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      const next = (currentSlide + 1) % phones.length;
+      showSlide(next);
+    }
+
+    function prevSlide() {
+      const prev = (currentSlide - 1 + phones.length) % phones.length;
+      showSlide(prev);
+    }
+
+    function startAutoPlay() {
+      if (isMobile()) {
+        autoPlayInterval = setInterval(nextSlide, 3000);
+      }
+    }
+
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+    }
+
+    // Initialize carousel on mobile
+    function initCarousel() {
+      if (isMobile()) {
+        showSlide(0);
+        startAutoPlay();
+      } else {
+        phones.forEach(phone => phone.classList.remove('carousel-active'));
+        stopAutoPlay();
+      }
+    }
+
+    // Dot click handlers
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        stopAutoPlay();
+        showSlide(index);
+        startAutoPlay();
+      });
+    });
+
+    // Touch/swipe support
+    heroPhones.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoPlay();
+    }, { passive: true });
+
+    heroPhones.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+      startAutoPlay();
+    }, { passive: true });
+
+    // Handle resize
+    window.addEventListener('resize', initCarousel);
+
+    // Initialize
+    initCarousel();
+  }
+
   // FAQ accordion
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
