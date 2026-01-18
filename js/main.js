@@ -20,64 +20,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Hero phone carousel for mobile
+  // Hero phone carousel for mobile - manual only
   const phones = document.querySelectorAll('.hero-phone');
   const dots = document.querySelectorAll('.carousel-dot');
 
   if (phones.length === 3 && dots.length === 3) {
-    let current = 0;
-    let timer = null;
-
     function show(n) {
-      // Wrap around
-      if (n >= 3) n = 0;
-      if (n < 0) n = 2;
-
-      // Update classes
       for (let i = 0; i < 3; i++) {
         phones[i].classList.remove('carousel-active');
         dots[i].classList.remove('active');
       }
       phones[n].classList.add('carousel-active');
       dots[n].classList.add('active');
-      current = n;
-    }
-
-    function next() {
-      if (window.innerWidth <= 900) {
-        show(current + 1);
-      }
-    }
-
-    function start() {
-      stop();
-      if (window.innerWidth <= 900) {
-        timer = setInterval(next, 4000);
-      }
-    }
-
-    function stop() {
-      if (timer) {
-        clearInterval(timer);
-        timer = null;
-      }
     }
 
     // Dot clicks
     for (let i = 0; i < 3; i++) {
-      dots[i].addEventListener('click', () => {
-        stop();
-        show(i);
-        start();
-      });
+      dots[i].addEventListener('click', () => show(i));
     }
 
     // Init on load and resize
     function init() {
-      stop();
       if (window.innerWidth <= 900) {
         show(0);
-        start();
       } else {
         for (let i = 0; i < 3; i++) {
           phones[i].classList.remove('carousel-active');
