@@ -306,8 +306,15 @@ a.nav-cta {
     top: 0;
     opacity: 0;
     transform: none !important;
+    transition: opacity 0.3s ease;
   }
 
+  /* Default: show front image before JS loads */
+  .hero-phones:not(.js-loaded) .hero-phone-front {
+    opacity: 1;
+  }
+
+  /* After JS: only show active slide */
   .hero-phone.carousel-active {
     opacity: 1;
   }

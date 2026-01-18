@@ -61,8 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Init on load and resize
     function init() {
       if (window.innerWidth <= 900) {
+        heroPhones.classList.add('js-loaded');
         show(0);
       } else {
+        heroPhones.classList.remove('js-loaded');
         for (let i = 0; i < 3; i++) {
           phones[i].classList.remove('carousel-active');
           dots[i].classList.remove('active');
