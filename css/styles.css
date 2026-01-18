@@ -288,37 +288,31 @@ a.nav-cta {
 
 @media (max-width: 900px) {
   .hero-phones {
-    width: 100%;
-    max-width: 280px;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    overflow: hidden;
+    width: 200px;
+    height: 380px;
     position: relative;
+    margin: 0 auto;
   }
 
   .hero-phone {
     position: absolute;
     width: 200px;
-    left: 50%;
+    left: 0;
     top: 0;
-    transform: translateX(-50%);
     opacity: 0;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
   }
 
   .hero-phone.carousel-active {
-    position: relative;
     opacity: 1;
-    transform: translateX(0);
-    left: auto;
+    pointer-events: auto;
   }
 
   .hero-phone-front,
   .hero-phone-mid,
   .hero-phone-back {
-    transform: translateX(-50%);
+    transform: none;
     z-index: 1;
   }
 
@@ -329,35 +323,28 @@ a.nav-cta {
   .hero-phones:hover .hero-phone-front,
   .hero-phones:hover .hero-phone-mid,
   .hero-phones:hover .hero-phone-back {
-    transform: translateX(-50%);
-    z-index: 1;
-  }
-
-  .hero-phones:hover .hero-phone.carousel-active {
-    transform: translateX(0);
-    z-index: 2;
+    transform: none;
   }
 
   /* Carousel dots */
   .hero-carousel-dots {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     margin-top: 20px;
   }
 
   .carousel-dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background: var(--color-border);
+    background: rgba(61, 36, 24, 0.2);
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
+    transition: background 0.3s ease;
   }
 
   .carousel-dot.active {
     background: var(--color-primary);
-    transform: scale(1.2);
   }
 }
 

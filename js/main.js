@@ -27,24 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (heroPhones && phones.length > 0 && dots.length > 0) {
     let currentSlide = 0;
-    let autoPlayInterval;
+    let autoPlayInterval = null;
     let touchStartX = 0;
-    let touchEndX = 0;
 
     function isMobile() {
       return window.innerWidth <= 900;
     }
 
     function showSlide(index) {
-      if (!isMobile()) return;
-
       phones.forEach((phone, i) => {
         phone.classList.remove('carousel-active');
-        dots[i].classList.remove('active');
+        if (dots[i]) dots[i].classList.remove('active');
       });
 
       phones[index].classList.add('carousel-active');
-      dots[index].classList.add('active');
+      if (dots[index]) dots[index].classList.add('active');
       currentSlide = index;
     }
 
@@ -59,30 +56,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startAutoPlay() {
+      stopAutoPlay();
       if (isMobile()) {
-        autoPlayInterval = setInterval(nextSlide, 3000);
+        autoPlayInterval = setInterval(nextSlide, 3500);
       }
     }
 
     function stopAutoPlay() {
-      clearInterval(autoPlayInterval);
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
+      }
     }
 
     // Initialize carousel on mobile
     function initCarousel() {
+      stopAutoPlay();
       if (isMobile()) {
-        showSlide(0);
+        showSlide(currentSlide);
         startAutoPlay();
       } else {
         phones.forEach(phone => phone.classList.remove('carousel-active'));
-        stopAutoPlay();
       }
     }
 
     // Dot click handlers
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
-        stopAutoPlay();
         showSlide(index);
         startAutoPlay();
       });
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     heroPhones.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
+      const touchEndX = e.changedTouches[0].screenX;
       const diff = touchStartX - touchEndX;
 
       if (Math.abs(diff) > 50) {
@@ -108,8 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
       startAutoPlay();
     }, { passive: true });
 
-    // Handle resize
-    window.addEventListener('resize', initCarousel);
+    // Handle resize with debounce
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(initCarousel, 150);
+    });
 
     // Initialize
     initCarousel();
