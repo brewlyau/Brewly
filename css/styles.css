@@ -287,6 +287,11 @@ a.nav-cta {
 }
 
 @media (max-width: 900px) {
+  .hero-visual {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .hero-phones {
     width: 200px;
     height: 380px;
