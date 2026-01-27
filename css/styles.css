@@ -1985,7 +1985,7 @@ a.nav-cta {
 
 @media (max-width: 600px) {
   .request-cafe-section {
-    padding: 60px 0;
+    padding: 60px 16px;
   }
 }
 
