@@ -1,5 +1,6 @@
-// Google Sheets Web App URL - Replace with your deployed Apps Script URL
+// Google Sheets Web App URLs
 const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbznlns7ciuHc3WQUkXbU2ryFwcKnZA9fXpAvWY-glRAcPNna-CZlcVWg34ZmQk82e9p/exec';
+const CAFE_REQUEST_URL = 'https://script.google.com/macros/s/AKfycbwUayxcQPlNB3DzPcieiZuG2CZoKF-IeIdtVNZF-G1FvKqTvp7jHcEHmSbRvMDDmVu-gg/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile menu toggle
@@ -257,6 +258,45 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (error) {
         waitlistStatus.textContent = 'Something went wrong. Please try again.';
         waitlistStatus.classList.add('error');
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  }
+
+  // Request a Cafe form submission
+  const requestCafeForm = document.getElementById('request-cafe-form');
+  const requestCafeStatus = document.getElementById('request-cafe-status');
+
+  if (requestCafeForm) {
+    requestCafeForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitBtn = requestCafeForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Submitting...';
+      submitBtn.disabled = true;
+      requestCafeStatus.textContent = '';
+      requestCafeStatus.className = 'request-cafe-status';
+
+      const formData = new FormData(requestCafeForm);
+      formData.append('type', 'cafe_request');
+      formData.append('timestamp', new Date().toISOString());
+
+      try {
+        await fetch(CAFE_REQUEST_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        });
+
+        requestCafeStatus.textContent = "Thanks! We'll reach out to them and let you know.";
+        requestCafeStatus.classList.add('success');
+        requestCafeForm.reset();
+      } catch (error) {
+        requestCafeStatus.textContent = 'Something went wrong. Please try again.';
+        requestCafeStatus.classList.add('error');
       } finally {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;

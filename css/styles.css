@@ -1899,6 +1899,97 @@ a.nav-cta {
 }
 
 /* ===================
+   Request a Cafe Section
+   =================== */
+.request-cafe-section {
+  padding: 80px 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.request-cafe-content {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.request-cafe-content h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+.request-cafe-content > p {
+  color: var(--color-text-secondary);
+  font-size: 1.125rem;
+  margin-bottom: 32px;
+}
+
+.request-cafe-form {
+  text-align: left;
+}
+
+.request-cafe-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.request-cafe-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.request-cafe-form label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.request-cafe-form input {
+  padding: 14px 18px;
+  font-size: 1rem;
+  font-family: var(--font);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: #fff;
+  transition: var(--transition);
+}
+
+.request-cafe-form input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.request-cafe-form button {
+  width: 100%;
+}
+
+.request-cafe-status {
+  margin-top: 16px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.request-cafe-status.success {
+  color: var(--color-success, #22c55e);
+}
+
+.request-cafe-status.error {
+  color: var(--color-error, #ef4444);
+}
+
+@media (max-width: 600px) {
+  .request-cafe-section {
+    padding: 60px 0;
+  }
+}
+
+/* ===================
    Cafe CTA Section
    =================== */
 .cafe-cta {
